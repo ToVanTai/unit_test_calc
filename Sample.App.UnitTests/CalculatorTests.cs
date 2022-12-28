@@ -20,21 +20,25 @@
         [Test]
         public void Add_BillNumber_ReturnCorrectSum()
         {
+            // arrage
             long x = 2000000000;
             long y = 2000000000;
             var expectedResult = 4000000000;
             var caculator = new Calculator();
+            // act
             long actualResult = caculator.Add(x, y);
+            // assert
             Assert.AreEqual(expectedResult, actualResult);
         }
-        [TestCase(1, 2, 0.5)]
+
+
+        
         [TestCase(2, 1, 2)]
         [TestCase(4, 2, 2)]
         [TestCase(-4, 2, -2)]
         [TestCase(-4, -2, 2)]
         [TestCase(0, 2, 0)]
-        [TestCase(1, 3, 0.333)]
-        public void Divide_ValidInput_ReturnCorrectDevide(int x, int y, double expectedResult)
+        public void Divide_ValidInput_ReturnCorrectDevide(double x, double y, double expectedResult)
         {
             //arrage - chuẩn bị dữ liệu đầu vào và kết quả mong muấn
             var caculator = new Calculator();
@@ -46,6 +50,30 @@
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestCase(1, 2, 0.5)]
+        [TestCase(1, 3, 0.333)]
+        public void Divide_ValidInput_ReturnDoubleNumber(double x, double y, double expectedResult)
+        {
+            //arrage
+            var calculator = new Calculator();
+            //act
+            double actualResult = calculator.Divide(x, y);
+            //assest
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestCase(1.2, 0.6, 2)]
+        public void Divide_InputDouble_ReturnDoubleNumber(double x, double y, double expectedResult)
+        {
+            //arrage
+            var calculator = new Calculator();
+            //act
+            double acturalResult = calculator.Divide(x, y);
+            //assert
+            Assert.AreEqual(expectedResult, acturalResult);
+        }
+
 
         [TestCase(1, 0)]
         [TestCase(-1, 0)]
